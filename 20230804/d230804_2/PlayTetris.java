@@ -22,37 +22,26 @@ public class PlayTetris {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		Random random = new Random();
-		List<Deque<Integer>> dequeList = new ArrayList<>();
-		
+		random.setSeed(System.currentTimeMillis());
+
 		System.out.println("블록이 들어갈 라인의 개수를 입력하세요");
 		int lineNum = scanner.nextInt();
-		
-		System.out.println("----------------------");
-		int blockNum = random.nextInt(lineNum) + 1;
-		System.out.println(blockNum + " 블록이 들어갈 라인의 번호를 입력하세요");
-		
-		
-		
-		for(int i = 0; i < lineNum; i++) {
-			Deque<Integer> intDeque = new LinkedList<>();
-			
-			
-			for(int j = 0; j < 5; j++) {
-				intDeque.add(blockNum);
+
+		BlockMap blockMap = new BlockMap(lineNum);
+
+		while (true) {
+			blockMap.showmap();
+			int block = random.nextInt(lineNum*2)+1;
+			System.out.println(block+" 블록이 들어갈 라인의 번호를 입력하세요");
+			int onNum = scanner.nextInt();
+			if (blockMap.onBlock(onNum, block)) {
+				System.out.print(blockMap.getCount()+" 회 만에 ");
+				System.out.println(onNum+" 라인이 꽉찼습니다.");
+				blockMap.showmap();
+				break;
 			}
-			
-			dequeList.add(intDeque);
+
 		}
-		
-		
-		
-		for (int i = 0; i < dequeList.size(); i++) {
-            Deque<Integer> intDeque = dequeList.get(i);
-            System.out.println();
-		}
-		
-		
-		
-		scanner.close();
+
 	}
 }
