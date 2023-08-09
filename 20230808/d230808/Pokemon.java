@@ -7,7 +7,7 @@ public class Pokemon {
 	String pkNname;
 	int power;
 	Map<String, Object> statMap;
-	Map<String, String> skillMap;
+	Map<String, Integer> skillMap;
 	
 	// Pokemon 생성자
 	public Pokemon() {
@@ -17,10 +17,6 @@ public class Pokemon {
 	
 	// 유즈케이스에 맞게 이후 메소드 구성
 
-	// 현재 체력
-	public void getHp(int[][] pkStat, String pkNname) {
-		
-		System.out.println("현재 체력 ");
-	}
+
 
 }
