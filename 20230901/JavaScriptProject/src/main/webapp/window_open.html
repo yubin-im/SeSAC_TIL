@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script> 
+function createWindow() { 
+	new_window = window.open("calc.html", "newWindow", 
+		"toolbar=no, width=400, height=300, directories=no, status=no, scrollbars=yes, resize=no");
+} 
+</script> 
+</head>
+<body>
+window 객체의 open() 메소드를 테스트 중입니다.<br> 
+
+<FORM> 
+<INPUT TYPE = "button" VALUE = "계산기" onClick = "createWindow()"> 
+</FORM>
+
+</body>
+</html>

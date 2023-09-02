@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+confirm 자바 스크립트 입니다.<br>
+<script type="text/javascript">
+//document.write("&lt;SCRIPT SRC=hello.js&gt;를 이용한 자바스크립트 예제입니다.");
+//document.write("<br><font size='+1'>Hello ~ world ~ ^_*</font>");
+	
+alert("alert은 경고 메시지 용으로 사용");
+	
+if(confirm("확실합니까 ?")) 
+	alert("OK"); 
+else 
+	alert("CANCEL"); 	
+	
+var name = prompt("이름을 입력하세요");
+sayHello(name);
+
+function sayHello(n) {
+	document.write("Hello ~ " + n);
+}
+	
+</script>
+<br>
+<script lang="javascript" SRC="hello.js"></script>
+<br>
+<script type="text/javascript">
+var a,x,y; 
+var r = 10; 
+with(Math){ 
+a = PI * r * r; 
+x = r * cos(PI); 
+y = r * sin(PI/2); 
+} 
+document.write("a = " + a+"<br>"); 
+document.write("x = " + x+"<br>"); 
+document.write("y = " + y+"<br>");
+</script>
+<script type="text/javascript">
+function factiorial(n) { 
+	if(n == 0 || n == 1) 
+		return 1; 
+	else { 
+		result = (n * factiorial(n-1)); 
+		return result; 
+	} 
+} 
+</script>
+<script>
+document.writeln("6! is " + factiorial(6)); 
+</script>
+<script type="text/javascript">
+function compute(f) { 
+	if(confirm("Are you sure ?")) 
+		f.result.value = eval(f.expr.value); 
+	else 
+		alert("Please come back again"); 
+} 
+
+function cleanForm(f) { 
+	f.expr.value= " "; 
+	f.result.value = " "; 
+} 
+</script>
+<form> 
+수식을 넣으세요: 
+<input type="text" name="expr" size=20> 
+<input type="button" value="계산" onClick="compute(this.form)"> 
+<input type="button" value="지우기" onClick="cleanForm(this.form)"> 
+<br> 
+결과: 
+<input type="text" name="result" size=20> 
+</form>
+</body>
+</html>
