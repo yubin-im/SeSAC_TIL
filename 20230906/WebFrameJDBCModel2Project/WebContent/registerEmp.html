@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript">
+		function checkInput(form) {
+			//alert(form.name.value);
+			var result = true;
+			var check = /[^0-9-]/;//숫자와-를 뺀 모든 문자
+			if(!form.name.value) //null, None, ""(trim())
+				result = false;
+			if(!form.id.value) //null, None, ""(trim())
+				result = false;
+			if(!form.pwd.value) //null, None, ""(trim())
+				result = false;
+
+			//숫자가 아니면(a~z, A~Z, ㄱ~힣 안됨) : regular experssion
+			//RegExp 클래스가 있음
+			
+			if(!form.phone.value) //null, None, ""(trim())
+				result = false;
+			else
+				if(check.test(form.phone.value))//https://hamait.tistory.com/342
+					result = false;
+				
+			if(!form.email.value) //undefined, NaN, null, None, ""(trim())
+				result = false;
+			alert(result);
+			return result; //form - onsubmit= return true : form.submit()과 동일
+		}
+	</script>
+</head>
+<body>
+	<form name="form1" action="registerAction.jsp" onsubmit="return checkInput(form1);">
+			<table>
+				<tr>
+					<th colspan="2"><center><h3>직원 정보 등록</h3></center></th>
+				</tr>
+				<tr><td>*&lt;이&nbsp;름&gt;</td><td><input name="name"></td></tr>
+				<tr><td>*ID</td><td><input name="id"></td></tr>
+				<tr><td>*PWD</td><td><input type="password" name="pwd"></td></tr>
+				<tr><td>*전화번호</td><td><input type="tel" name="phone" value="숫자만 입력"></td></tr>
+				<tr><td>성&nbsp;별</td>
+						<td><input type="radio" name="gender" value="f">여성
+							<input type="radio" name="gender" value="m">남성
+						</td>
+				</tr>
+				<tr>	<td>*e-mail</td>	<td><input type="email" name="email"></td>	</tr>
+				<tr>	<td>직&nbsp;급</td>
+						<td>	<select name="position">
+									<option value="5">이사		<option value="4">부장		<option value="3">차장
+									<option value="2">과장		<option value="1">대리		<option value="0">사원
+								</select>
+						</td>
+				</tr>
+				<tr><td>취&nbsp;미</td>
+						<td>
+							<input type="checkbox" name="hobby" value="movie">영화감상
+							<input type="checkbox" name="hobby" value="music">음악감상
+							<input type="checkbox" name="hobby" value="book">독서
+						</td>
+				</tr>
+				<tr>	<td colspan="2">	<input type="submit" value="전송">	<input type="reset" value="취소"></td>
+				</tr>
+			</table>
+	</form>
+</body>
+</html>
