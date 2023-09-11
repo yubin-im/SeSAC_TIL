@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC 
+	"-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap>
+ 
+ <cacheModel type="LRU" id="guestCashe1">
+ 	<flushInterval hours="24"/>
+ 	<flushOnExecute statement="insertGuest1"/>
+ 	<property name="size" value="10"/>
+ </cacheModel>
+ 
+ 
+ <!-- typeAlias : 해당 클래스에 별명 지정  -->
+ <typeAlias alias="emp" type="kr.co.mycom.board.model.EmpDTO" />
+ 
+ <insert id="insertEmp" parameterClass="emp">
+ 	insert into TBL_USER(name, gender, id, regdt, pwd, phone, position, e_Mail, hobby)
+		VALUES (#name#, #gender#, #id#, sysdate, #pwd#, #phone#, #position#, #email#, #hobby#)
+ </insert> 
+ 
+ 
+ <resultMap class="emp" id="empResult">
+ 
+	<result property="name" column="name" />  	
+	<result property="gender" column="gender" />  	
+	<result property="regdate" column="regdt" />  	
+	<result property="pwd" column="pwd" />  	
+	<result property="phone" column="phone" />  	
+	<result property="position" column="position" />  	
+	<result property="email" column="e_mail" />  	
+	<result property="hobby" column="hobby" />  	
+	
+ </resultMap>
+ 
+ <select id="getEmpList" resultMap="empResult">
+ 	select * from TBL_USER
+ </select> 
+ <!-- < 시작꺽쇠 사용하면 오류 발생  -->
+ 
+ <select id="getEmp" parameterClass="emp" resultClass="emp">
+ 	select * from TBL_USER where id = #id#
+ </select> 
+ 
+ <update id = "updateEmp" parameterClass="emp">
+     update TBL_USER  set name=#name#, gender=#gender#, 
+     			pwd=#pwd#, phone=#phone#, position=#position#, 
+     			e_mail=#email#, hobby=#hobby# 
+     			where id = #id#
+ </update>
+ 
+ <delete id = "deleteEmp" parameterClass="emp">
+ 	 delete from TBL_USER  where id = #id#
+ </delete>
+ 
+</sqlMap>
