@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>배경색 변경</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #changeColorButton {
+            padding: 20px 40px;
+            font-size: 24px;
+            background: transparent; /* 배경을 투명하게 설정 */
+            border: 2px dashed black; /* 외곽선을 점선으로 설정 */
+            color: black; /* 글자 색상 설정 */
+        }
+    </style>
+</head>
+<body>
+    <button id="changeColorButton">CLICK ME!</button>
+
+    <script>
+        const changeColorButton = document.getElementById('changeColorButton');
+
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        changeColorButton.addEventListener('click', function() {
+            const randomColor = getRandomColor();
+            document.body.style.backgroundColor = randomColor;
+        });
+    </script>
+</body>
+</html>

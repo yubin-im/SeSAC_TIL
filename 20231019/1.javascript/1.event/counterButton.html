@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>숫자 조작</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        #counter {
+            font-size: 36px;
+            margin: 20px 0;
+        }
+
+        .button-container {
+            display: flex; /* 버튼을 한 줄에 배치하기 위해 flex 사용 */
+            justify-content: center; /* 가운데 정렬 */
+            align-items: center;
+        }
+
+        button {
+            font-size: 21px;
+            background: transparent;
+            border: 2px dashed black;
+            padding: 5px 10px;
+            margin: 0 10px; /* 버튼 사이의 간격을 추가 */
+        }
+
+        /* 색상 클래스 정의 */
+        .negative {
+            color: red;
+        }
+
+        .positive {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Counter</h1>
+    <h1 id="counter">0</h1>
+    <div class="button-container">
+        <button id="decreaseButton">DECREASE</button>
+        <button id="resetButton">RESET</button>
+        <button id="increaseButton">INCREASE</button>
+    </div>
+
+    <script>
+        const decreaseButton = document.getElementById('decreaseButton');
+        const resetButton = document.getElementById('resetButton');
+        const increaseButton = document.getElementById('increaseButton');
+        const counter = document.getElementById('counter');
+
+        let count = 0;
+
+        function updateCounter() {
+            counter.textContent = count;
+            
+            counter.classList.remove('negative', 'positive');
+            if (count < 0) {
+                counter.classList.add('negative');
+            } else if (count > 0) {
+                counter.classList.add('positive');
+            }
+        }
+
+        decreaseButton.addEventListener('click', function() {
+            count--;
+            updateCounter();
+        });
+
+        resetButton.addEventListener('click', function() {
+            count = 0;
+            updateCounter();
+        });
+
+        increaseButton.addEventListener('click', function() {
+            count++;
+            updateCounter();
+        });
+
+        updateCounter(); // 초기 숫자 표시
+    </script>
+</body>
+</html>
